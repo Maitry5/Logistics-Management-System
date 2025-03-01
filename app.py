@@ -28,8 +28,8 @@ with app.app_context():
     db.create_all()
     
     app.security.datastore.find_or_create_role(name="admin",description="superuser")
-    app.security.datastore.find_or_create_role(name="customer",description="Those who book the services")
-    app.security.datastore.find_or_create_role(name="professional",description="Those who provide the services")
+    app.security.datastore.find_or_create_role(name="user",description="Those users/customers")
+
     db.session.commit()
     
     
@@ -40,11 +40,11 @@ with app.app_context():
                                            roles=['admin'])
     
     
-    if not app.security.datastore.find_user(email="customer1@gmail.com"):
-        app.security.datastore.create_user(email="customer1@gmail.com",
-                                           username="customer1",
-                                           password=hash_password("customer1"),
-                                           roles=['customer'])  
+    if not app.security.datastore.find_user(email="user@gmail.com"):
+        app.security.datastore.create_user(email="user@gmail.com",
+                                           username="user",
+                                           password=hash_password("user"),
+                                           roles=['user'])  
     
     db.session.commit()
 
