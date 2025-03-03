@@ -11,7 +11,7 @@ class User(db.Model,UserMixin):
     active=db.Column(db.Boolean,nullable=False)
     roles=db.relationship('Role',backref='bearer',secondary='user_roles')
     trans=db.relationship('Transaction',backref='bearer')
-    #extra attributes (which dont apply to all the users)
+
 
 
 class Role(db.Model,RoleMixin):
